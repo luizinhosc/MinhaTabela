@@ -31,7 +31,7 @@ public class TimesPorDivisao {
 	
 	@Column(name = "id_time")
 	@ManyToMany
-	private List<time> times = new ArrayList();
+	private List<Time> Times = new ArrayList();
 	
 	@JoinColumn(unique=true)
 	@ManyToOne
@@ -41,9 +41,9 @@ public class TimesPorDivisao {
 		
 	}
 
-	public TimesPorDivisao(Temporada temporada, List<time> list, Divisao divisoes) {
+	public TimesPorDivisao(Temporada temporada, List<Time> list, Divisao divisoes) {
 		this.temporada = temporada;
-		this.times = (List<time>) list;
+		this.Times = (List<Time>) list;
 		this.divisoes = divisoes;
 	}
 	

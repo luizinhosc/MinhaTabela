@@ -31,7 +31,7 @@ public class Divisao implements Serializable {
 	private String descricao;
     
     @OneToMany
-    private List<time> times;
+    private List<Time> Times;
     
     @ManyToOne
     private Temporada temporada;

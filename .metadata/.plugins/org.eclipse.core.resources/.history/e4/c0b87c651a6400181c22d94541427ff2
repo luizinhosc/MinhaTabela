@@ -1,0 +1,42 @@
+html, body {
+	height: 100%
+}
+
+.style {
+    height: 80px;
+}
+
+.logo {
+	margin-right: 20px;
+}
+
+.navbar-inverse {
+	background-color: maroon;
+}
+
+.btn-space {
+	margin: 5px;
+}
+
+.erro {
+	background-color: #ffcccc;
+}
+
+#holder {
+	min-height: 100%;
+	position: relative;
+	
+}
+
+#body {
+	padding-bottom: 50px;
+}
+
+.footer {
+	color: white;
+	height: 50px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}

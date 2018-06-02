@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import br.com.minhatabela.beans.Divisao;
 import br.com.minhatabela.beans.Temporada;
-import br.com.minhatabela.beans.time;
+import br.com.minhatabela.beans.Time;
 import br.com.minhatabela.util.JPAUtil;
 
 public class TestaTime {
@@ -33,8 +33,8 @@ public class TestaTime {
 
 		Divisao divisao = em.find(Divisao.class, 3);
 		Divisao divisao1 = em.find(Divisao.class, 4);
-		time time1 = em.find(time.class, 7);
-		time time2 = em.find(time.class, 8);
+		Time time1 = em.find(Time.class, 7);
+		Time time2 = em.find(Time.class, 8);
 		em.getTransaction().begin();
 
 		em.remove(time1);
@@ -53,7 +53,7 @@ public class TestaTime {
 		Temporada temporada = em.find(Temporada.class, 1);
 
 		Date datacad = new Date();
-		time time1 = new time("Vasco da Gama", datacad, temporada, divisao);
+		Time time1 = new Time("Vasco da Gama", datacad, temporada, divisao);
 
 		em.getTransaction().begin();
 		em.persist(divisao);
@@ -76,12 +76,12 @@ public class TestaTime {
 		Query query = em.createQuery(jpql);
 		query.setParameter("pDivisao", divisao.getDescricao());
 
-		List<time> times = query.getResultList();
+		List<Time> Times = query.getResultList();
 
-		for (time time : times) {
+		for (Time Time : Times) {
 
-			System.out.println("Time: " + time.getTime() + " Divisao: " + time.getDivisao().getDescricao()
-					+ " Temporada: " + time.getTemporada().getTemporada());
+			System.out.println("Time: " + Time.getTime() + " Divisao: " + Time.getDivisao().getDescricao()
+					+ " Temporada: " + Time.getTemporada().getTemporada());
 
 		}
 
@@ -96,16 +96,16 @@ public class TestaTime {
 		Temporada temporada = em.find(Temporada.class, 1);
 
 		Date datacad = new Date();
-		time times = new time("Santos", datacad, temporada, d);
-		time times1 = new time("Corintians", datacad, temporada, d);
-		time times2 = new time("Flamengo", datacad, temporada, d);
+		Time Times = new Time("Santos", datacad, temporada, d);
+		Time times1 = new Time("Corintians", datacad, temporada, d);
+		Time times2 = new Time("Flamengo", datacad, temporada, d);
 
-		em.persist(times);
+		em.persist(Times);
 		em.persist(times1);
 		em.persist(times2);
 
-		System.out.println("Nome do time: " + times.getTime() + " + " + times.getDivisao().getDescricao() + " - "
-				+ times.getTemporada().getTemporada());
+		System.out.println("Nome do time: " + Times.getTime() + " + " + Times.getDivisao().getDescricao() + " - "
+				+ Times.getTemporada().getTemporada());
 		em.getTransaction().commit();
 		em.close();
 
@@ -118,7 +118,7 @@ public class TestaTime {
 		Temporada temporada = new Temporada("2018");
 
 		Date datacad = new Date();
-		time time1 = new time("São Paulo", datacad, temporada, divisao);
+		Time time1 = new Time("São Paulo", datacad, temporada, divisao);
 
 		em.getTransaction().begin();
 		em.persist(divisao);
@@ -140,10 +140,10 @@ public class TestaTime {
 
 		Temporada temporada = em.find(Temporada.class, 1);
 
-		time times = em.find(time.class, 2);
+		Time Times = em.find(Time.class, 2);
 
-		System.out.println("Nome do time: " + times.getTime() + " + " + times.getDivisao().getDescricao() + " - "
-				+ times.getTemporada().getTemporada());
+		System.out.println("Nome do time: " + Times.getTime() + " + " + Times.getDivisao().getDescricao() + " - "
+				+ Times.getTemporada().getTemporada());
 
 		em.close();
 	}

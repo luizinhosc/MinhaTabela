@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/home/luiz/Estudos/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2226325735.index
+1628956392.index
+1273149347.index
+2927784250.index
+3057935106.index
+1506128201.index
+1624917285.index

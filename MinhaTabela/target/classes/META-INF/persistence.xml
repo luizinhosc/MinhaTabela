@@ -12,7 +12,7 @@
 
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.minhatabela.beans.Divisao</class>
-		<class>br.com.minhatabela.beans.time</class>
+		<class>br.com.minhatabela.beans.Time</class>
 
 		<properties>
 

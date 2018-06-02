@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:body>
+	<ui:composition template="./template.xhtml">
+		<ui:define name="content">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h4>Cadastrar uma Divisão</h4>
+					<form class="form-horizontal" jsf:id="formDivisao">
+                          <div class="alert #{NovaDivisao.mensagem.tipoMensagem}" jsf:id="mensagem">
+                              #{NovaDivisao.mensagem.texto}
+                            </div>					
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="divisao">Divisão</label>
+							<div class="col-sm-4">
+								<input type="divisao" 
+									   class="form-control" 
+									   jsf:id="divisao"
+									   jsf:label="Divisão" 
+									   jsf:value="#{novaDivisaoBean.divisao.descricao}"
+									   jsf:required="true"/>
+								<h:message for="divisao" class="text text-danger"/> 
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<button type="submit" class="btn btn-danger" jsf:id="confirmar" jsf:action="#{novaDivisaoBean.gravar}" >
+								Confirmar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
