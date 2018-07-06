@@ -12,6 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<h:outputStylesheet name="default.css" library="css" />
+	<h:outputScript name="default.js" library="js"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title>Minha Tabela Personalizada</title>
@@ -42,7 +43,7 @@
 					<li	class="#{view.viewId=='/cadastraTimeForm.xhtml'?'active':''}"><a jsf:outcome="cadastraTimeForm">Cadastrar Times</a></li>					
 					<li class="#{view.viewId=='/listaPalpites.xhtml'?'active':''}"><a jsf:outcome="listaPalpites">Ver palpites</a></li>
 				</ul>
-			</div>
+			</div>[]
 		</div>
 		</nav> 
 		</header>
@@ -62,5 +63,6 @@
 		</table>
 		</footer>
 	</div>
+	 <div class="modal" id="ajax-loader"/>
 </h:body>
 </html>

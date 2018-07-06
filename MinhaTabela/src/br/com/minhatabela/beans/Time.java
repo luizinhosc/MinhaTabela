@@ -1,15 +1,18 @@
 package br.com.minhatabela.beans;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -34,22 +37,19 @@ public class Time {
 	@Basic(optional = false)
 	@Column(name = "dt_cadastro")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataCadastro;
+	private Calendar dataCadastro = Calendar.getInstance();
 	
-	@ManyToOne
-	private Temporada temporada;
-	
-	@ManyToOne
+	@JoinColumn(name="id_divisao", referencedColumnName = "id_divisao")
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Divisao divisao;
 	
 
 	public Time() {
 	}
 
-	public Time(String time, Date dataCadastro, Temporada temporada, Divisao divisao) {
+	public Time(String time, Calendar dataCadastro, Temporada temporada, Divisao divisao) {
 		this.time = time;
 		this.dataCadastro = dataCadastro;
-		this.temporada = temporada;
 		this.divisao = divisao;
 	}
 
@@ -73,21 +73,14 @@ public class Time {
 		this.time = time;
 	}
 
-	public Date getDataCadastro() {
+	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(Calendar dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Temporada getTemporada() {
-		return temporada;
-	}
-
-	public void setTemporada(Temporada temporada) {
-		this.temporada = temporada;
-	}
 
 	public Divisao getDivisao() {
 		return divisao;

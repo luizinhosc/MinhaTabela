@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 
 import br.com.minhatabela.beans.Temporada;
-import br.com.minhatabela.beans.TimesPorDivisao;
 import br.com.minhatabela.beans.Divisao;
 import br.com.minhatabela.beans.Time;
 import br.com.minhatabela.util.JPAUtil;

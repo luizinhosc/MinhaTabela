@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,11 +31,8 @@ public class Divisao implements Serializable {
     @Column(name = "nm_divisao")    
 	private String descricao;
     
-    @OneToMany
+    @OneToMany(mappedBy="divisao", fetch=FetchType.LAZY)
     private List<Time> Times;
-    
-    @ManyToOne
-    private Temporada temporada;
     
     public Divisao() {
     	

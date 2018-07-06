@@ -4,7 +4,9 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
 <h:body>
 	<ui:composition template="./template.xhtml">
 		<ui:define name="content">
@@ -12,27 +14,68 @@
 				<div class="col-lg-12 text-center">
 					<h4>Cadastrar uma Divisão</h4>
 					<form class="form-horizontal" jsf:id="formDivisao">
-                          <div class="alert #{NovaDivisao.mensagem.tipoMensagem}" jsf:id="mensagem">
-                              #{NovaDivisao.mensagem.texto}
-                            </div>					
+						<div class="alert #{novaDivisaoBean.mensagem.tipoMensagem}"
+							jsf:id="mensagem">#{novaDivisaoBean.mensagem.texto}</div>
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="divisao">Divisão</label>
 							<div class="col-sm-4">
-								<input type="divisao" 
-									   class="form-control" 
-									   jsf:id="divisao"
-									   jsf:label="Divisão" 
-									   jsf:value="#{novaDivisaoBean.divisao.descricao}"
-									   jsf:required="true"/>
-								<h:message for="divisao" class="text text-danger"/> 
+								<input type="divisao" class="form-control" jsf:id="divisao"
+									jsf:label="Divisão"
+									jsf:value="#{novaDivisaoBean.divisao.descricao}"
+									jsf:required="true"
+									jsf:requiredMessage="O Nome da Divisão é obrigatório" />
+								<h:message for="divisao" class="text text-danger" />
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<button type="submit" class="btn btn-danger" jsf:id="confirmar" jsf:action="#{novaDivisaoBean.gravar}" >
-								Confirmar</button>
+
+						<div class="col-sm-6">
+							<button class="btn btn-success btn-space" type="submit"
+								jsf:id="confirmar" jsf:action="@form">
+								<f:ajax execute="@form" render="@form" onevent="monitorarAjax"
+									listener="#{novaDivisaoBean.gravar}" />
+								Confirmar
+							</button>
+
+
 						</div>
+
 					</form>
 				</div>
+			</div>
+
+			<div class="row">
+				<br />
+				<div class="col-lg-6 text-center">
+					<h:form id="formTabelaDivisao">
+
+						<p:dataTable var="divisao" value="#{novaDivisaoBean.divisoes}"
+							id="listaDivisoes" paginator="true" rows="5">
+
+							<p:column headerText="Id">
+								<h:outputText value="#{divisao.id}" />
+							</p:column>
+
+							<p:column headerText="Descricao">
+								<h:outputText value="#{divisao.descricao}" />
+							</p:column>
+
+							<p:column headerText="Alterar">
+								<h:commandLink value="alterar"
+									action="#{novaDivisaoBean.carregar(divisao)}" />
+							</p:column>
+
+							<p:column headerText="Excluir">
+								<h:commandLink value="Excluir"
+									action="#{novaDivisaoBean.excluir(divisao)}" />
+							</p:column>
+
+						</p:dataTable>
+
+					</h:form>
+
+				</div>
+
 			</div>
 		</ui:define>
 	</ui:composition>

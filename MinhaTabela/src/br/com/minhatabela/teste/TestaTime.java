@@ -1,5 +1,6 @@
 package br.com.minhatabela.teste;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class TestaTime {
 		Divisao divisao = em.find(Divisao.class, 1);
 		Temporada temporada = em.find(Temporada.class, 1);
 
-		Date datacad = new Date();
+		Calendar datacad = Calendar.getInstance();
 		Time time1 = new Time("Vasco da Gama", datacad, temporada, divisao);
 
 		em.getTransaction().begin();
@@ -81,7 +82,7 @@ public class TestaTime {
 		for (Time Time : Times) {
 
 			System.out.println("Time: " + Time.getTime() + " Divisao: " + Time.getDivisao().getDescricao()
-					+ " Temporada: " + Time.getTemporada().getTemporada());
+					+ " Temporada: " );
 
 		}
 
@@ -95,7 +96,7 @@ public class TestaTime {
 		Divisao d = em.find(Divisao.class, 1);
 		Temporada temporada = em.find(Temporada.class, 1);
 
-		Date datacad = new Date();
+		Calendar datacad = Calendar.getInstance();
 		Time Times = new Time("Santos", datacad, temporada, d);
 		Time times1 = new Time("Corintians", datacad, temporada, d);
 		Time times2 = new Time("Flamengo", datacad, temporada, d);
@@ -104,8 +105,7 @@ public class TestaTime {
 		em.persist(times1);
 		em.persist(times2);
 
-		System.out.println("Nome do time: " + Times.getTime() + " + " + Times.getDivisao().getDescricao() + " - "
-				+ Times.getTemporada().getTemporada());
+		System.out.println("Nome do time: " + Times.getTime() + " + " + Times.getDivisao().getDescricao());
 		em.getTransaction().commit();
 		em.close();
 
@@ -117,7 +117,7 @@ public class TestaTime {
 		Divisao divisao = new Divisao("Série A");
 		Temporada temporada = new Temporada("2018");
 
-		Date datacad = new Date();
+		Calendar datacad = Calendar.getInstance();
 		Time time1 = new Time("São Paulo", datacad, temporada, divisao);
 
 		em.getTransaction().begin();
@@ -143,7 +143,7 @@ public class TestaTime {
 		Time Times = em.find(Time.class, 2);
 
 		System.out.println("Nome do time: " + Times.getTime() + " + " + Times.getDivisao().getDescricao() + " - "
-				+ Times.getTemporada().getTemporada());
+				);
 
 		em.close();
 	}
